@@ -19,6 +19,11 @@ sns.set_theme(style="whitegrid")
 def cargar_datos():
     """Carga y prepara el DataFrame una sola vez."""
     df = pd.read_csv('https://raw.githubusercontent.com/Esteban-correa/proyecto_analisis_integrador/refs/heads/main/Internet_Fijo_Penetraci_n_Municipio_20250804.csv')
+    # Limpieza de datos
+    df['INDICE'] = df['INDICE'].str.replace(',', '.').astype(float)
+    df.info()
+    df.isnull().sum()
+    df.isna().sum()
     df['No. ACCESOS FIJOS A INTERNET'] = df['No. ACCESOS FIJOS A INTERNET'].astype(int)
     return df
 
@@ -431,4 +436,5 @@ with tab3:
         """,
         language='markdown'
     )
+
 
